@@ -1,0 +1,11 @@
+version: '2'
+services:
+  backend:
+    build: ./
+    environment:
+      - PORT=${PORT}
+      - RPC_URL=${RPC_URL}
+    restart: always
+    labels:
+      - "traefik.http.routers.backend.rule=Host(`${BACKEND_HOST}`)"
+      - "traefik.http.routers.backend.tls=true"
